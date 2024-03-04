@@ -52,4 +52,4 @@ def sporadic():
 
 
 if __name__ == "__main__":
-    sporadic()
+    bursty()

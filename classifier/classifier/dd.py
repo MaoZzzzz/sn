@@ -1,5 +1,5 @@
 import random
-import csv
+import re
 
 
 def modify_data(data, ratios):
@@ -77,7 +77,7 @@ def run1():
 
 def run2():
     ratios = [3.0, 2, 3.0, 1, 1, 3.0, 3.0, 0, 3.0, 3.0, 3.0]
-    random_numbers = [random.randint(1, 600) for _ in range(600)]
+    random_numbers = [random.randint(1, 2000) for _ in range(2000)]
 
     file_path_source = 'source.txt'
     file_path_target = 'target.txt'
@@ -91,11 +91,11 @@ def run2():
 
         with open(file_path_target, 'r') as file:
             lines_target = file.readlines()
-            target = "1" + "\n" if lines_target[random_numbers[i]] == "1" else "0" + "\n"
-            # if random_numbers[i] / 2 == 0:
-            #     target = "0" + "\n" if lines_target[random_numbers[i]] == "1" else "1" + "\n"
-            # else:
-            #     target = "1" + "\n" if lines_target[random_numbers[i]] == "1" else "0" + "\n"
+            # target = "1" + "\n" if lines_target[random_numbers[i]] == "1" else "0" + "\n"
+            if random_numbers[i] / 2 == 0:
+                target = "0" + "\n" if lines_target[random_numbers[i]] == "1" else "1" + "\n"
+            else:
+                target = "1" + "\n" if lines_target[random_numbers[i]] == "1" else "0" + "\n"
 
         lines_source.insert(random_numbers[i], source)
         lines_target.insert(random_numbers[i], target)
@@ -112,7 +112,7 @@ def remove_system_call():
     with open(input_file, 'r') as f:
         lines = f.readlines()
 
-    column_index = 7
+    column_index = 6
     modified_lines = []
     for line in lines:
         parts = line.strip().split(',')
@@ -124,13 +124,13 @@ def remove_system_call():
 
 
 def modify_system_call():
-    input_file = 'source_wo_system_call.txt'
+    input_file = 'source.txt'
     output_file = 'source_wo_system_call.txt'
     with open(input_file, 'r') as f:
         lines = f.readlines()
 
     modified_lines = []
-    column_index = 10
+    column_index = 7
     for line in lines:
         parts = line.strip().split(',')
         parts[column_index] = str("0")
@@ -147,17 +147,23 @@ def modify_system_call_colume():
         lines = f.readlines()
 
     modified_lines = []
-    column_index = 7
+    column_index = 9
     for line in lines:
         parts = line.strip().split(',')
-        if float(parts[column_index]) > 0 and float(parts[column_index]) < 50:
-            parts[column_index] = str("67.0")
+        parts[column_index] = '0.0'
+        # if is_float(parts[column_index]) and float(parts[column_index]) > 0 and float(parts[column_index]) < 50:
+        #     parts[column_index] = str("67.0")
         modified_lines.append(','.join(parts) + '\n')
 
     with open(output_file, 'w') as f:
         f.writelines(modified_lines)
 
 
+def is_float(s):
+    pattern = re.compile(r'^[-+]?[0-9]*\.[0-9]+$')
+    return bool(pattern.match(s))
+
+
 if __name__ == "__main__":
     # run2()
-    modify_system_call_colume()
+    remove_system_call()

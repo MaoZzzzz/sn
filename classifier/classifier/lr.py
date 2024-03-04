@@ -4,11 +4,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-features_file = 'source.txt'
-# features_file = 'source_wo_system_call.txt'
+features_file = 'fake\\source.txt'
+# features_file = 'fake\\source_wo_system_call.txt'
 df_features = pd.read_csv(features_file)
 
-target_file = 'target.txt'
+target_file = 'fake\\target.txt'
 df_target = pd.read_csv(target_file, header=None, names=['target'], skiprows=1)
 
 # 将数据分割为训练集和测试集
