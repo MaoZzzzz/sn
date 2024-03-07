@@ -124,8 +124,8 @@ def add_some_error(file_nums, add_nums):
 
 
 def remove_column(i):
-    input_file = 'source_wo_system_call.txt'
-    output_file = 'source_wo_system_call.txt'
+    input_file = 'D:\Workdir\pycharm\sn\classifier\classifier\merged_file.txt'
+    output_file = 'input.txt'
     with open(input_file, 'r') as f:
         lines = f.readlines()
 
@@ -140,8 +140,20 @@ def remove_column(i):
         f.writelines(modified_lines)
 
 
+def latency():
+    input_file_path = 'D:\Workdir\pycharm\sn\classifier\classifier\merged_file.txt'
+    output_file_path = 'latency.txt'
+    with open(input_file_path, 'r') as file:
+        lines = file.readlines()
+        with open(output_file_path, 'w') as output_file:
+            for line in lines:
+                columns = line.strip().split(',')
+                output_file.write(columns[6] + '\n')
+
+
 if __name__ == "__main__":
     # evening_the_correlation(0, 0)
     # add_some_error(1900, 300)
     # modify_system_call_colume()
-    remove_column(8)
+    # latency()
+    remove_column(6)

@@ -4,11 +4,11 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-features_file = 'fake\\source.txt'
-# features_file = 'fake\\source_wo_system_call.txt'
+features_file = 'bake\\source.txt'
+# features_file = 'bake\\source_wo_system_call.txt'
 df_features = pd.read_csv(features_file)
 
-target_file = 'fake\\target.txt'
+target_file = 'bake\\target.txt'
 df_target = pd.read_csv(target_file, header=None, names=['target'], skiprows=1)
 
 # 将数据分割为训练集和测试集
