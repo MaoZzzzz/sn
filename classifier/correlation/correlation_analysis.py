@@ -5,19 +5,19 @@ from scipy.stats import pearsonr, spearmanr, kendalltau
 
 def read_from_file(i):
     # 读取第一个文件
-    file1_path = '/classifier/classifier/bake\\source.txt'
+    file1_path = 'D:\Workdir\pycharm\sn\classifier\classifier\stage2\\x86_source.txt'
     df1 = pd.read_csv(file1_path, header=None)
 
     # 读取第二个文件
-    file2_path = '/classifier/classifier/bake\\target.txt'
+    file2_path = 'D:\Workdir\pycharm\sn\classifier\classifier\stage2\\x86_target.txt'
     df2 = pd.read_csv(file2_path, header=None)
 
     pearsonr_corr, pearsonr_p_value = pearsonr(df1[i], df2[0])
     kendall_corr, kendall_p_value = kendalltau(df1[i], df2[0])
     spearman_corr, spearman_p_value = spearmanr(df1[i], df2[0])
     print(f"Pearson Correlation Coefficient for column : {pearsonr_corr, pearsonr_p_value}")
-    print(f"Kendalltau Correlation Coefficient for column : {kendall_corr, kendall_p_value}")
-    print(f"Spearmanr Correlation Coefficient for column : {spearman_corr, spearman_p_value}")
+    # print(f"Kendalltau Correlation Coefficient for column : {kendall_corr, kendall_p_value}")
+    # print(f"Spearmanr Correlation Coefficient for column : {spearman_corr, spearman_p_value}")
 
 
 def read_from_data():
@@ -59,5 +59,5 @@ def read_from_data():
 
 
 if __name__ == "__main__":
-    for i in range(0, 15):
+    for i in range(0, 10):
         read_from_file(i)

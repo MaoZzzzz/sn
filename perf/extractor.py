@@ -45,7 +45,7 @@ def run(file_path):
 #         if file.startswith("perf") and "X86" in file_path:
 #             run(file_path)
 
-input_files = ['1.txt', '1.txt']
+input_files = ['riscv_bak.txt', 'riscv_bak.txt']
 
 with open("1.txt", 'r') as output:
     file1 = output.readlines()
