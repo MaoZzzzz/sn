@@ -15,18 +15,9 @@ def knn(X_train, X_test, y_train, y_test):
     knn_classifier.fit(X_train, y_train.values.ravel())
     y_pred = knn_classifier.predict(X_test)
 
-    print("KNN 模型结果")
-    mse = mean_squared_error(y_test, y_pred)
-    mae = mean_absolute_error(y_test, y_pred)
-    r2 = r2_score(y_test, y_pred)
-    explained_variance = explained_variance_score(y_test, y_pred)
+    prediction_error_rate = ((y_pred - y_test.values.ravel()) / y_test.values.ravel()) * 100
 
-    print("Mean Squared Error:", mse)
-    print("Mean Absolute Error:", mae)
-    print("R^2 Score:", r2)
-    print("Explained Variance Score:", explained_variance)
-
-    return knn_classifier
+    return prediction_error_rate
 
 
 def rfr(X_train, X_test, y_train, y_test):
@@ -34,18 +25,21 @@ def rfr(X_train, X_test, y_train, y_test):
     rf_regressor.fit(X_train, y_train.values.ravel())
     y_pred = rf_regressor.predict(X_test)
 
-    print("RFR 模型结果")
-    mse = mean_squared_error(y_test, y_pred)
-    mae = mean_absolute_error(y_test, y_pred)
-    r2 = r2_score(y_test, y_pred)
-    explained_variance = explained_variance_score(y_test, y_pred)
+    prediction_error_rate = ((y_pred - y_test.values.ravel()) / y_test.values.ravel()) * 100
 
-    print("Mean Squared Error:", mse)
-    print("Mean Absolute Error:", mae)
-    print("R^2 Score:", r2)
-    print("Explained Variance Score:", explained_variance)
+    return prediction_error_rate
+    # print("RFR 模型结果")
+    # mse = mean_squared_error(y_test, y_pred)
+    # mae = mean_absolute_error(y_test, y_pred)
+    # r2 = r2_score(y_test, y_pred)
+    # explained_variance = explained_variance_score(y_test, y_pred)
+    #
+    # print("Mean Squared Error:", mse)
+    # print("Mean Absolute Error:", mae)
+    # print("R^2 Score:", r2)
+    # print("Explained Variance Score:", explained_variance)
 
-    return rf_regressor
+    # return rf_regressor
 
 
 def lr(features_file, target_file):
@@ -63,18 +57,9 @@ def lr(features_file, target_file):
     model.fit(X_train_scaled, y_train)
     y_pred = model.predict(X_test_scaled)
 
-    print("LR 模型结果")
-    mse = mean_squared_error(y_test, y_pred)
-    mae = mean_absolute_error(y_test, y_pred)
-    r2 = r2_score(y_test, y_pred)
-    explained_variance = explained_variance_score(y_test, y_pred)
+    prediction_error_rate = ((y_pred - y_test.values.ravel()) / y_test.values.ravel()) * 100
 
-    print("Mean Squared Error:", mse)
-    print("Mean Absolute Error:", mae)
-    print("R^2 Score:", r2)
-    print("Explained Variance Score:", explained_variance)
-
-    return model
+    return prediction_error_rate
 
 
 def svr(X_train, X_test, y_train, y_test):
@@ -82,18 +67,9 @@ def svr(X_train, X_test, y_train, y_test):
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
 
-    print("SVR 模型结果")
-    mse = mean_squared_error(y_test, y_pred)
-    mae = mean_absolute_error(y_test, y_pred)
-    r2 = r2_score(y_test, y_pred)
-    explained_variance = explained_variance_score(y_test, y_pred)
+    prediction_error_rate = ((y_pred - y_test.values.ravel()) / y_test.values.ravel()) * 100
 
-    print("Mean Squared Error:", mse)
-    print("Mean Absolute Error:", mae)
-    print("R^2 Score:", r2)
-    print("Explained Variance Score:", explained_variance)
-
-    return model
+    return prediction_error_rate
 
 
 def mlp(X_train, X_test, y_train, y_test):
@@ -101,25 +77,12 @@ def mlp(X_train, X_test, y_train, y_test):
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
 
-    print("MLP 模型结果")
-    mse = mean_squared_error(y_test, y_pred)
-    mae = mean_absolute_error(y_test, y_pred)
-    r2 = r2_score(y_test, y_pred)
-    explained_variance = explained_variance_score(y_test, y_pred)
+    prediction_error_rate = ((y_pred - y_test.values.ravel()) / y_test.values.ravel()) * 100
 
-    print("Mean Squared Error:", mse)
-    print("Mean Absolute Error:", mae)
-    print("R^2 Score:", r2)
-    print("Explained Variance Score:", explained_variance)
-
-    return model
+    return prediction_error_rate
 
 
-def dump(model):
-    joblib.dump(model, 'knn_model.joblib')
-
-
-def train(features_file, target_file, model_list):
+def train(features_file, target_file, model_list, output_file):
     df_features = pd.read_csv(features_file)
     df_target = pd.read_csv(target_file, header=None, names=['target'], skiprows=1)
     df = pd.concat([df_features, df_target], axis=1)
@@ -129,18 +92,37 @@ def train(features_file, target_file, model_list):
 
     for model in model_list:
         if model == "0":
-            rfr(X_train, X_test, y_train, y_test)
+            with open(output_file + "{}_error_rate.txt".format("rfr"), 'a') as f:
+                for i, error_rate in enumerate(rfr(X_train, X_test, y_train, y_test)):
+                    f.write(str(error_rate) + "\n")
         elif model == "1":
-            knn(X_train, X_test, y_train, y_test)
+            with open(output_file + "{}_error_rate.txt".format("knn"), 'a') as f:
+                for i, error_rate in enumerate(knn(X_train, X_test, y_train, y_test)):
+                    f.write(str(error_rate) + "\n")
         elif model == "2":
-            lr(features_file, target_file)
+            with open(output_file + "{}_error_rate.txt".format("lr"), 'a') as f:
+                for i, error_rate in enumerate(lr(features_file, target_file)):
+                    f.write(str(error_rate) + "\n")
         elif model == "3":
-            svr(X_train, X_test, y_train, y_test)
+            with open(output_file + "{}_error_rate.txt".format("svr"), 'a') as f:
+                for i, error_rate in enumerate(svr(X_train, X_test, y_train, y_test)):
+                    f.write(str(error_rate) + "\n")
         elif model == "4":
-            mlp(X_train, X_test, y_train, y_test)
+            with open(output_file + "{}_error_rate.txt".format("mlp"), 'a') as f:
+                for i, error_rate in enumerate(mlp(X_train, X_test, y_train, y_test)):
+                    f.write(str(error_rate) + "\n")
 
 
 if __name__ == '__main__':
-    model_list = ["0", "1", "2", "3", "4"]
-    train("/rfaas/classifier/classifier/bake/input.txt",
-          "D:\Workdir\pycharm\sn\classifier\classifier\\bake\latency.txt", model_list)
+    functionNames = ["compose_post", "upload_creator", "upload_text", "upload_media", "upload_unique_id",
+                     "upload_user_mentions", "post_storage", "upload_home_timeline",
+                     "upload_user_timeline"]
+    for functionName in functionNames:
+        model_list = ["0", "1", "2", "3", "4"]
+
+        source_path = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\{}_source.txt".format(
+            functionName)
+        target_path = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\{}_target.txt".format(
+            functionName)
+        output_file = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\predict_result\\"
+        train(source_path, target_path, model_list, output_file)

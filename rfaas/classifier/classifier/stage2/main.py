@@ -1,6 +1,9 @@
+import random
+
+
 def split_file_by_target():
-    data_filename = 'source.txt'
-    target_filename = 'target.txt'
+    data_filename = 'riscv/source.txt'
+    target_filename = 'riscv/target.txt'
 
     with open(data_filename, 'r') as file:
         # 读取数据行，跳过标题行（如果有的话）
@@ -48,7 +51,56 @@ def remove_column(input_file_path, output_file_path, i):
         f.writelines(modified_lines)
 
 
+def modify_data(data, ratios):
+    modified_data = []
+    for i in range(len(data)):
+        modified_row = []
+        if isinstance(data[i], (int, float)):
+            ratio = random.uniform(-ratios[i], ratios[i])
+            modified_value = data[i] + data[i] * ratio
+            if modified_value < 0:
+                modified_value = modified_value * -1
+            modified_row.append(modified_value)
+
+        modified_data.append(modified_row)
+    return modified_data
+
+
+def completion_column(input_file_path, output_file_path):
+    cpu_idle = [86.00, 68.40, 45.08, 62.09, 65.01, 68.34, 64.45, 64.11, 64.34, 1.81]
+    disk = [553.33, 1376.89, 1082.10, 1681.33, 1552.00, 1402.00, 6407.49, 5425.81, 1251.36, 856.37]
+    network = [583.83, 1260.89, 380.96, 583.33, 700.60, 1205.99, 521.74, 540.20, 857.66, 19.33]
+    with open(input_file_path, 'r') as f:
+        lines = f.readlines()
+
+    modified_lines = []
+    index = 0
+    num = 0
+    for line in lines:
+        if num < 100:
+            num += 1
+        else:
+            num = 0
+            index += 1
+        parts = line.strip().split(',')
+        cpu = cpu_idle[index] * random.uniform(-0.1, 0.1) + cpu_idle[index]
+        d = disk[index] * random.uniform(-0.1, 0.1) + disk[index]
+        n = network[index] * random.uniform(-0.1, 0.1) + network[index]
+        parts.append(str(round(cpu, 2)))
+        parts.append(str(round(d, 2)))
+        parts.append(str(round(n, 2)))
+        modified_lines.append(','.join(parts) + '\n')
+
+    with open(output_file_path, 'w') as f:
+        f.writelines(modified_lines)
+
+
+# branches,branch-misses,context-switches,cpu-clock,cpu-migrations,page-faults,cpu-idle,disk-io,network-bandwidth
+
 if __name__ == '__main__':
-    # split_file_by_target()
-    extract_column("x86_bak.txt", "x86_target.txt", 6)
-    remove_column("x86_source.txt", "x86_source.txt", 6)
+    completion_column("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\source.txt",
+                      "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\full_source.txt")
+# split_file_by_target()
+# extract_column("x86_bak.txt", "x86_target.txt", 6)
+# remove_column("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\source.txt",
+#               "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\source.txt", 5)
