@@ -17,7 +17,7 @@ def knn(X_train, X_test, y_train, y_test):
 
     prediction_error_rate = ((y_pred - y_test.values.ravel()) / y_test.values.ravel()) * 100
 
-    return prediction_error_rate
+    return y_pred
 
 
 def rfr(X_train, X_test, y_train, y_test):
@@ -27,7 +27,7 @@ def rfr(X_train, X_test, y_train, y_test):
 
     prediction_error_rate = ((y_pred - y_test.values.ravel()) / y_test.values.ravel()) * 100
 
-    return prediction_error_rate
+    return y_pred
     # print("RFR 模型结果")
     # mse = mean_squared_error(y_test, y_pred)
     # mae = mean_absolute_error(y_test, y_pred)
@@ -59,7 +59,7 @@ def lr(features_file, target_file):
 
     prediction_error_rate = ((y_pred - y_test.values.ravel()) / y_test.values.ravel()) * 100
 
-    return prediction_error_rate
+    return y_pred
 
 
 def svr(X_train, X_test, y_train, y_test):
@@ -69,7 +69,7 @@ def svr(X_train, X_test, y_train, y_test):
 
     prediction_error_rate = ((y_pred - y_test.values.ravel()) / y_test.values.ravel()) * 100
 
-    return prediction_error_rate
+    return y_pred
 
 
 def mlp(X_train, X_test, y_train, y_test):
@@ -79,7 +79,7 @@ def mlp(X_train, X_test, y_train, y_test):
 
     prediction_error_rate = ((y_pred - y_test.values.ravel()) / y_test.values.ravel()) * 100
 
-    return prediction_error_rate
+    return y_pred
 
 
 def train(features_file, target_file, model_list, output_file):
@@ -92,23 +92,23 @@ def train(features_file, target_file, model_list, output_file):
 
     for model in model_list:
         if model == "0":
-            with open(output_file + "{}_error_rate.txt".format("rfr"), 'a') as f:
+            with open(output_file + "{}_predict_time.txt".format("rfr"), 'a') as f:
                 for i, error_rate in enumerate(rfr(X_train, X_test, y_train, y_test)):
                     f.write(str(error_rate) + "\n")
         elif model == "1":
-            with open(output_file + "{}_error_rate.txt".format("knn"), 'a') as f:
+            with open(output_file + "{}_predict_time.txt".format("knn"), 'a') as f:
                 for i, error_rate in enumerate(knn(X_train, X_test, y_train, y_test)):
                     f.write(str(error_rate) + "\n")
         elif model == "2":
-            with open(output_file + "{}_error_rate.txt".format("lr"), 'a') as f:
+            with open(output_file + "{}_predict_time.txt".format("lr"), 'a') as f:
                 for i, error_rate in enumerate(lr(features_file, target_file)):
                     f.write(str(error_rate) + "\n")
         elif model == "3":
-            with open(output_file + "{}_error_rate.txt".format("svr"), 'a') as f:
+            with open(output_file + "{}_predict_time.txt".format("svr"), 'a') as f:
                 for i, error_rate in enumerate(svr(X_train, X_test, y_train, y_test)):
                     f.write(str(error_rate) + "\n")
         elif model == "4":
-            with open(output_file + "{}_error_rate.txt".format("mlp"), 'a') as f:
+            with open(output_file + "{}_predict_time.txt".format("mlp"), 'a') as f:
                 for i, error_rate in enumerate(mlp(X_train, X_test, y_train, y_test)):
                     f.write(str(error_rate) + "\n")
 
@@ -116,13 +116,13 @@ def train(features_file, target_file, model_list, output_file):
 if __name__ == '__main__':
     functionNames = ["compose_post", "upload_creator", "upload_text", "upload_media", "upload_unique_id",
                      "upload_user_mentions", "post_storage", "upload_home_timeline",
-                     "upload_user_timeline"]
+                     "upload_user_timeline", "matmul"]
     for functionName in functionNames:
         model_list = ["0", "1", "2", "3", "4"]
 
-        source_path = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\{}_source.txt".format(
+        source_path = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\{}_source.txt".format(
             functionName)
-        target_path = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\{}_target.txt".format(
+        target_path = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\{}_target.txt".format(
             functionName)
-        output_file = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\predict_result\\"
+        output_file = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\time_result\\"
         train(source_path, target_path, model_list, output_file)

@@ -2,8 +2,8 @@ import random
 
 
 def split_file_by_target():
-    data_filename = 'riscv/source.txt'
-    target_filename = 'riscv/target.txt'
+    data_filename = 'x86/source.txt'
+    target_filename = 'x86/target.txt'
 
     with open(data_filename, 'r') as file:
         # 读取数据行，跳过标题行（如果有的话）
@@ -98,9 +98,9 @@ def completion_column(input_file_path, output_file_path):
 # branches,branch-misses,context-switches,cpu-clock,cpu-migrations,page-faults,cpu-idle,disk-io,network-bandwidth
 
 if __name__ == '__main__':
-    completion_column("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\source.txt",
-                      "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\full_source.txt")
-# split_file_by_target()
-# extract_column("x86_bak.txt", "x86_target.txt", 6)
-# remove_column("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\source.txt",
-#               "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\source.txt", 5)
+    completion_column("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\source.txt",
+                      "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\full_source.txt")
+    # split_file_by_target()
+    # extract_column("x86_bak.txt", "x86_target.txt", 6)
+    # remove_column("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\source.txt",
+    #               "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\source.txt", 5)
