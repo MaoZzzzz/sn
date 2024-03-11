@@ -120,9 +120,9 @@ if __name__ == '__main__':
     for functionName in functionNames:
         model_list = ["0", "1", "2", "3", "4"]
 
-        source_path = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\{}_source.txt".format(
+        source_path = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\{}_source.txt".format(
             functionName)
-        target_path = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\{}_target.txt".format(
+        target_path = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\{}_target.txt".format(
             functionName)
-        output_file = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\time_result\\"
+        output_file = "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\time_result\\"
         train(source_path, target_path, model_list, output_file)

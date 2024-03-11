@@ -164,6 +164,20 @@ def is_float(s):
     return bool(pattern.match(s))
 
 
+def add(file_path, i):
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+
+    modified = []
+    for lin in lines:
+        modified.append(float(lin) + i)
+
+    with open(file_path, 'w') as f:
+        for line in modified:
+            f.writelines(str(round(line, 6)) + "\n")
+
+
 if __name__ == "__main__":
     # run2()
-    remove_system_call()
+    # remove_system_call()
+    add("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\upload_user_mentions_target.txt", 0.0002)
