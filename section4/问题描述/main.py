@@ -67,7 +67,7 @@ def sm_jct():
     plt.grid()
 
     plt.tight_layout()
-    # plt.savefig('sm_jct.eps')
+    plt.savefig('sm_jct.pdf')
     plt.show()
 
 

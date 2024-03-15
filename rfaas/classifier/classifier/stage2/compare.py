@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
@@ -118,10 +117,12 @@ def box_sub():
         bplot = ax.boxplot(data, patch_artist=True, labels=labels,
                            positions=(0.1, 0.3, 0.6, 0.8, 1.1, 1.3, 1.6, 1.8),
                            widths=0.18, showfliers=False)
+
         x_position = [0.2, 0.7, 1.2, 1.7]
         x_position_fmt = ["RFR", "KNN", "LR", "SVR"]
         ax.set_title(functionName[i], fontsize=10)
-        ax.set_xticks([i for i in x_position], x_position_fmt)
+        ax.set_xticks(x_position)
+        ax.set_xticklabels(x_position_fmt)
 
         if i == 0 or i == 5:
             ax.set_ylabel("预测时间", fontsize=10)
@@ -134,5 +135,29 @@ def box_sub():
     plt.show()
 
 
+def error_num(x86_file_path, riscv_file_path, index):
+    with open(x86_file_path, 'r') as f:
+        x86_lines = f.readlines()
+    with open(riscv_file_path, 'r') as f:
+        riscv_lines = f.readlines()
+
+    x86_rfr = [float(line.strip()) for line in x86_lines]
+    groups_rfr_x86 = [x86_rfr[i:i + 20] for i in range(0, len(x86_rfr), 20)]
+
+    riscv_rfr = [float(line.strip()) for line in riscv_lines]
+    groups_rfr_riscv = [riscv_rfr[i:i + 20] for i in range(0, len(riscv_rfr), 20)]
+
+    sum = 0
+    for i in range(len(groups_rfr_riscv[index])):
+        print(groups_rfr_riscv[index][i])
+        print(groups_rfr_x86[index][i])
+        if groups_rfr_riscv[index][i] > groups_rfr_x86[index][i]:
+            sum += 1
+
+    print(sum / 20)
+
+
 if __name__ == '__main__':
-    box_sub()
+    # box_sub()
+    error_num("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\time_result\\rfr_predict_time.txt",
+              "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\time_result\\rfr_predict_time.txt", 8)
