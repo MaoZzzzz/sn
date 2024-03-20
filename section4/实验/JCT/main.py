@@ -18,12 +18,12 @@ def overall_jct():
     bar_width = 0.3
     x = np.arange(len(labels)) * 2
 
-    plt.bar(x - 5 * bar_width / 2, AITurbo_vGPU, color='brown', width=bar_width, align='center', edgecolor='black')
-    plt.bar(x - 3 * bar_width / 2, AITurbo, color='red', width=bar_width, align='center', edgecolor='black')
-    plt.bar(x - bar_width / 2, Optimus, color='black', width=bar_width, align='center', edgecolor='black')
-    plt.bar(x + bar_width / 2, Tiresias, color='grey', width=bar_width, align='center', edgecolor='black')
-    plt.bar(x + 3 * bar_width / 2, SRTF, color='lightgrey', width=bar_width, align='center', edgecolor='black')
-    plt.bar(x + 5 * bar_width / 2, FCFS, color='whitesmoke', width=bar_width, align='center', edgecolor='black')
+    plt.bar(x - 5 * bar_width / 2, AITurbo_vGPU, width=bar_width, align='center', edgecolor='black')
+    plt.bar(x - 3 * bar_width / 2, AITurbo, width=bar_width, align='center', edgecolor='black')
+    plt.bar(x - bar_width / 2, Optimus, width=bar_width, align='center', edgecolor='black')
+    plt.bar(x + bar_width / 2, Tiresias, width=bar_width, align='center', edgecolor='black')
+    plt.bar(x + 3 * bar_width / 2, SRTF, width=bar_width, align='center', edgecolor='black')
+    plt.bar(x + 5 * bar_width / 2, FCFS, width=bar_width, align='center', edgecolor='black')
 
     plt.xticks(x, labels)
 
@@ -53,17 +53,17 @@ def long_short_jct():
     bar_width = 0.3
     x = np.arange(len(labels)) * 2
 
-    plt.bar(x - 5 * bar_width / 2, AITurbo_vGPU, color='brown', width=bar_width, align='center', edgecolor='black',
+    plt.bar(x - 5 * bar_width / 2, AITurbo_vGPU, width=bar_width, align='center', edgecolor='black',
             label='AIT-vGPU')
-    plt.bar(x - 3 * bar_width / 2, AITurbo, color='red', width=bar_width, align='center', edgecolor='black',
+    plt.bar(x - 3 * bar_width / 2, AITurbo, width=bar_width, align='center', edgecolor='black',
             label='AITurbo')
-    plt.bar(x - bar_width / 2, Optimus, color='black', width=bar_width, align='center', edgecolor='black',
+    plt.bar(x - bar_width / 2, Optimus, width=bar_width, align='center', edgecolor='black',
             label='Optimus')
-    plt.bar(x + bar_width / 2, Tiresias, color='grey', width=bar_width, align='center', edgecolor='black',
+    plt.bar(x + bar_width / 2, Tiresias, width=bar_width, align='center', edgecolor='black',
             label='Tiresias')
-    plt.bar(x + 3 * bar_width / 2, SRTF, color='lightgrey', width=bar_width, align='center', edgecolor='black',
+    plt.bar(x + 3 * bar_width / 2, SRTF, width=bar_width, align='center', edgecolor='black',
             label='SRTF')
-    plt.bar(x + 5 * bar_width / 2, FCFS, color='whitesmoke', width=bar_width, align='center', edgecolor='black',
+    plt.bar(x + 5 * bar_width / 2, FCFS, width=bar_width, align='center', edgecolor='black',
             label='FCFS')
 
     plt.xticks(x, labels)
@@ -98,12 +98,12 @@ def legend():
     ax.set_xticks(x)
     ax.set_xticklabels(labels)
 
-    p1 = plt.bar(x - 5 * bar_width / 2, AITurbo_vGPU, color='brown', width=bar_width, align='center', edgecolor='black')
-    p2 = plt.bar(x - 3 * bar_width / 2, AITurbo, color='red', width=bar_width, align='center', edgecolor='black')
-    p3 = plt.bar(x - bar_width / 2, Optimus, color='black', width=bar_width, align='center', edgecolor='black')
-    p4 = plt.bar(x + bar_width / 2, Tiresias, color='grey', width=bar_width, align='center', edgecolor='black')
-    p5 = plt.bar(x + 3 * bar_width / 2, SRTF, color='lightgrey', width=bar_width, align='center', edgecolor='black')
-    p6 = plt.bar(x + 5 * bar_width / 2, FCFS, color='whitesmoke', width=bar_width, align='center', edgecolor='black')
+    p1 = plt.bar(x - 5 * bar_width / 2, AITurbo_vGPU, width=bar_width, align='center', edgecolor='black')
+    p2 = plt.bar(x - 3 * bar_width / 2, AITurbo, width=bar_width, align='center', edgecolor='black')
+    p3 = plt.bar(x - bar_width / 2, Optimus, width=bar_width, align='center', edgecolor='black')
+    p4 = plt.bar(x + bar_width / 2, Tiresias, width=bar_width, align='center', edgecolor='black')
+    p5 = plt.bar(x + 3 * bar_width / 2, SRTF, width=bar_width, align='center', edgecolor='black')
+    p6 = plt.bar(x + 5 * bar_width / 2, FCFS, width=bar_width, align='center', edgecolor='black')
 
     plt.cla()
     plt.clf()
@@ -121,5 +121,34 @@ def legend():
     plt.show()
 
 
+def train_queue_jct():
+    queueing_time = [9, 30, 57, 80, 50, 145]
+    training_time = [85, 80, 98, 180, 170, 175]
+
+    labels = ['AIT-v.', 'AIT.', 'Opt.', 'Tire.', 'SRTF', 'FCFS']
+
+    plt.figure(figsize=(5, 3))
+    bar_width = 0.6
+    x = np.arange(len(labels))
+
+    p1 = plt.bar(labels, training_time, width=bar_width, edgecolor='black', align='center')
+    p2 = plt.bar(labels, queueing_time, width=bar_width, bottom=np.array(training_time), align='center',
+                 edgecolor='black')
+
+    plt.xticks(x, labels)
+
+    plt.ylabel('时间（分钟）', fontdict={'size': 16})
+    plt.tick_params(labelsize=14)
+    plt.grid()
+
+    plt.legend((p1[0], p2[0]), ('平均训练时间', '平均排队时间'), loc='upper left', fontsize=14)
+
+    # plt.tight_layout()
+    # plt.xticks(rotation=30)
+    plt.subplots_adjust(left=0.2, bottom=0.2)
+    plt.savefig('train_queue_jct.pdf')
+    plt.show()
+
+
 if __name__ == '__main__':
-    long_short_jct()
+    train_queue_jct()
