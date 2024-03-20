@@ -9,7 +9,7 @@ def draw(rfaas, rfaas_wo_sysytemcall, openfaas):
     #           'upload-unique-id', 'compose-and-upload', 'post-storage', 'upload-user-timeline', 'upload-home-timeline',
     #           'matmul', 'float', 'dd', 'json']
 
-    labels = ['CP', 'UC', 'UUM', 'UT', 'UM', 'UUI', 'CAU', 'PS', 'UUT', 'UHT', 'matmul', 'float', 'dd', 'json']
+    labels = ['CP', 'UC', 'UUM', 'UT', 'UM', 'UUI', 'CAU', 'PS', 'UUT', 'UHT', 'mat.', 'float', 'dd', 'json']
 
     base = [1] * len(rfaas)
     normalized_rfaas_wo_sysytemcall = []
@@ -29,15 +29,15 @@ def draw(rfaas, rfaas_wo_sysytemcall, openfaas):
     plt.bar(ind + bar_width / 2, normalized_openfaas, bar_width / 2, alpha=opacity, label='OpenFaas', edgecolor='black')
 
     plt.xticks(ind, labels)
-    plt.tick_params(axis='both', which='major', labelsize=8, length=0)
+    plt.tick_params(axis='both', which='major', labelsize=13, length=0)
     plt.margins(x=0)
     plt.ylim(0, 20)
 
-    plt.legend(fontsize=8)
-    plt.ylabel('归一化结果', labelpad=5)
+    plt.legend(fontsize=13)
+    plt.ylabel('归一化结果', labelpad=5, fontsize=13)
     plt.grid(True, linestyle='--')
     # plt.subplots_adjust(bottom=0.4)
-    plt.savefig("bursty_compare.pdf")
+    plt.savefig("periodic_compare.pdf")
     plt.show()
 
 
@@ -66,4 +66,4 @@ def bursty():
 
 
 if __name__ == "__main__":
-    bursty()
+    periodic()

@@ -129,6 +129,8 @@ def time_compare():
     rfaas = [0.0009999275207519531, 0.0015039443969726562, 0.0015039443969726562, 0.0014252662658691406,
              0.0010051727294921875, 0.0010013580322265625, 0.0009999275207519531, 0.0009987354278564453,
              0.001504659652709961, 0.001008749008178711]
+    lr = [0.0032776379585266113, 0.00750422477722168, 0.021849870681762695, 0.015984535217285156, 0.01749563217163086,
+          0.02076554298400879, 0.024031400680541992, 0.026018381118774414, 0.02699732780456543, 0.03549790382385254]
     knn = [0.0030045509338378906, 0.0040204524993896484, 0.005621433258056641, 0.005512714385986328,
            0.006566286087036133, 0.008948087692260742, 0.009514093399047852, 0.009509086608886719, 0.021145105361938477,
            0.029037952423095703]
@@ -141,33 +143,39 @@ def time_compare():
 
     fig, ax = plt.subplots(1, 1, figsize=(6, 4))
 
-    labels = ["3000", "4000", "5000", "6000", "7000", "8000", "9000", "10000", "20000", "30000"]
+    labels = ["3k", "4k", "5k", "6k", "7k", "8k", "9k", "10k", "20k", "30k"]
     ind = np.arange(len(labels))
 
-    ax.plot(ind, rfaas, marker='*', label='RFaas', linewidth=2)
+    # ax.plot(ind, rfaas, marker='*', label='RFaas', linewidth=2)
     ax.plot(ind, knn, marker='o', label='KNN', linewidth=2)
+    ax.plot(ind, lr, marker='*', label='LR', linewidth=2)
     ax.plot(ind, rfr, marker='.', label='RFR', linewidth=2)
     ax.plot(ind, svc, marker='+', label='SVC', linewidth=2)
-    ax.plot(ind, mlp, marker='s', label='MLP', linewidth=2)
+    # ax.plot(ind, mlp, marker='s', label='MLP', linewidth=2)
 
-    ax.set_xticks(ind, labels, rotation=0)
-    ax.tick_params(axis='both', which='major', labelsize=8, length=0)
-    # plt.margins(x=0)
-    ax.legend(fontsize=8, loc="lower right")
-    # plt.xlabel('负载类型')
-    ax.set_ylabel('时间(s)', labelpad=5)
+    ax.set_xticks(ind)
+    ax.set_xticklabels(labels)
+    ax.tick_params(axis='both', which='major', labelsize=13, length=0)
+    plt.margins(x=0)
+    ax.legend(fontsize=13, loc="lower left", ncol=2)
+    ax.set_xlabel('样本数量', labelpad=5, fontsize=13)
+    ax.set_ylabel('时间(s)', labelpad=5, fontsize=13)
     # plt.title('CPU test')
     ax.grid(True, linestyle='--')
 
     axins = inset_axes(ax, width='65%', height='40%', loc='upper left', bbox_to_anchor=(0.1, 0, 1, 1),
                        bbox_transform=ax.transAxes)
-    axins.plot(ind, rfaas, marker='*', label='RFaas', linewidth=2)
+
     axins.plot(ind, knn, marker='o', label='KNN', linewidth=2)
-    axins.legend(fontsize=8)
-    axins.set_xticks(ind, labels, rotation=0)
-    axins.tick_params(axis='both', which='major', labelsize=8, length=0)
+    axins.plot(ind, lr, marker='*', label='LR', linewidth=2)
+    axins.legend(fontsize=13)
+    axins.set_xticks(ind)
+    axins.set_xticklabels(labels)
+    axins.tick_params(axis='both', which='major', labelsize=13, length=0)
 
     mark_inset(ax, axins, loc1=3, loc2=4, fc="none", ec='k', lw=1)
+    plt.margins(0)
+    plt.subplots_adjust(bottom=0.2)
     plt.savefig("predictor_time_compare.pdf")
     plt.show()
 

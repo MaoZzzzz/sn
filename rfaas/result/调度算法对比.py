@@ -77,4 +77,6 @@ if __name__ == "__main__":
     fcfs = [34, 404, 9]
     sdf = [36, 1075, 231]
     srtf = [35, 1246, 854]
+
+    # 47 2700 2700
     # number_successful_requests(fcfs, sdf, srtf)

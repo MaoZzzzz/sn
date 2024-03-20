@@ -34,7 +34,8 @@ def box():
 
 
 def box_sub():
-    fig, axes = plt.subplots(nrows=2, ncols=5, figsize=(25, 6))
+    fig, axes = plt.subplots(nrows=3, ncols=3, figsize=(9, 6))
+    plt.subplots_adjust(hspace=0.5, wspace=0.4)
 
     with open("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\time_result\knn_predict_time.txt",
               'r') as file:
@@ -120,12 +121,13 @@ def box_sub():
 
         x_position = [0.2, 0.7, 1.2, 1.7]
         x_position_fmt = ["RFR", "KNN", "LR", "SVR"]
-        ax.set_title(functionName[i], fontsize=10)
+        ax.set_title(functionName[i], fontsize=13)
         ax.set_xticks(x_position)
         ax.set_xticklabels(x_position_fmt)
+        ax.tick_params(axis='both', labelsize=13)
 
-        if i == 0 or i == 5:
-            ax.set_ylabel("预测时间", fontsize=10)
+        if i == 0 or i == 3 or i == 6:
+            ax.set_ylabel("预测时间", fontsize=13)
 
         for patch, color in zip(bplot['boxes'], colors):
             patch.set_facecolor(color)
@@ -158,6 +160,6 @@ def error_num(x86_file_path, riscv_file_path, index):
 
 
 if __name__ == '__main__':
-    # box_sub()
-    error_num("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\time_result\\rfr_predict_time.txt",
-              "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\time_result\\rfr_predict_time.txt", 8)
+    box_sub()
+    # error_num("D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\riscv\\time_result\\rfr_predict_time.txt",
+    #           "D:\Workdir\pycharm\sn\\rfaas\classifier\classifier\stage2\\x86\\time_result\\rfr_predict_time.txt", 8)

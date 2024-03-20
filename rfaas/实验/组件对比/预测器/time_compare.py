@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from scipy.optimize import curve_fit
 import numpy as np
@@ -26,36 +27,44 @@ def data_create(i):
     rfr = RandomForestClassifier(n_estimators=10, random_state=42)
     svc = SVC()
     mlp = MLPClassifier()
+    lr = LogisticRegression()
+
+    # start_time = time.time()
+    # knn.fit(x, y)
+    # end_time = time.time()
+    # time_data.append(end_time - start_time)
+    #
+    # start_time = time.time()
+    # rfr.fit(x, y)
+    # end_time = time.time()
+    # time_data.append(end_time - start_time)
+    #
+    # start_time = time.time()
+    # svc.fit(x, y)
+    # end_time = time.time()
+    # time_data.append(end_time - start_time)
 
     start_time = time.time()
-    knn.fit(x, y)
+    lr.fit(x, y)
     end_time = time.time()
     time_data.append(end_time - start_time)
 
-    start_time = time.time()
-    rfr.fit(x, y)
-    end_time = time.time()
-    time_data.append(end_time - start_time)
-
-    start_time = time.time()
-    svc.fit(x, y)
-    end_time = time.time()
-    time_data.append(end_time - start_time)
-
-    start_time = time.time()
-    mlp.fit(x, y)
-    end_time = time.time()
-    time_data.append(end_time - start_time)
-
-    x = np.linspace(0, 10, 10000)  # 3000个数据点
-    y = 2 * x ** 2 - 3 * x + 1 + np.random.normal(0, 1, 10000)  # 二次函数加上噪声
-    start_time = time.time()
-    params, covariance = curve_fit(quadratic_func, x, y)
-    end_time = time.time()
-    time_data.append(end_time - start_time)
+    # start_time = time.time()
+    # mlp.fit(x, y)
+    # end_time = time.time()
+    # time_data.append(end_time - start_time)
+    #
+    # x = np.linspace(0, 10, 10000)  # 3000个数据点
+    # y = 2 * x ** 2 - 3 * x + 1 + np.random.normal(0, 1, 10000)  # 二次函数加上噪声
+    # start_time = time.time()
+    # params, covariance = curve_fit(quadratic_func, x, y)
+    # end_time = time.time()
+    # time_data.append(end_time - start_time)
 
     print(time_data)
 
 
 if __name__ == '__main__':
-   data_create(30000)
+    m = [3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 20000, 30000]
+    for i in m:
+        data_create(i)
