@@ -34,6 +34,7 @@ def calculate_percentage(data, total_time):
 
 
 def main():
+
     file_path = "D:\\Workdir\\idea\\Schedule\\data\\format\\upload-creator-X86.txt"
     data1 = process_file(file_path)
     total_time = data1["total_time"]
@@ -109,7 +110,6 @@ def main():
 
 
 def plot_stacked_bars(data_list):
-    plt.rcParams['font.sans-serif'] = ['SimHei']
 
     labels = list(data_list[0].keys())
     # positions = np.arange(len(labels))
@@ -142,7 +142,8 @@ def plot_stacked_bars(data_list):
 
         positions = positions + 1
 
-    plt.xticks(list(range(1, len(data_list) + 1)), function_name)
+    plt.rcParams["font.sans-serif"] = ["SimSun"]
+    plt.xticks(list(range(1, len(data_list) + 1)), function_name, fontproperties='Times New Roman')
     plt.tick_params(axis='both', which='major', labelsize=12, length=0)
     plt.margins(x=0.01)
 

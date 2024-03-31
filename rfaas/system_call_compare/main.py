@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 plt.rcParams['font.sans-serif'] = ['SimSun']
+# plt.rcParams['font.weight'] = 'bold'
 
 file_path = 'data.txt'  # Replace with your actual file path
 
@@ -36,7 +37,7 @@ def one_plt():
     plt.ylabel('归一化结果', labelpad=5)
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(bottom=0.4)
-    plt.savefig("system_call_compare.pdf")
+    # plt.savefig("system_call_compare.pdf")
 
     plt.show()
 
@@ -72,7 +73,7 @@ def two_subpicture():
     ax1.bar(df_half1.index, df_half1['Normalized'], bar_width, alpha=opacity, label='RISCV',
             edgecolor='black')
     ax1.set_xticks(df_half1.index)
-    ax1.set_xticklabels(df_half1['Operation'], rotation=90)
+    ax1.set_xticklabels(df_half1['Operation'], rotation=90, fontproperties='Times New Roman')
     ax1.tick_params(axis='both', which='major', labelsize=8, length=0)
     ax1.margins(x=0)
     ax1.legend(fontsize=8)
@@ -84,7 +85,7 @@ def two_subpicture():
     ax2.bar(df_half2.index, df_half2['Normalized'], bar_width, alpha=opacity, label='RISCV',
             edgecolor='black')
     ax2.set_xticks(df_half2.index)
-    ax2.set_xticklabels(df_half2['Operation'], rotation=90)
+    ax2.set_xticklabels(df_half2['Operation'], rotation=90, fontproperties='Times New Roman')
     ax2.tick_params(axis='both', which='major', labelsize=8, length=0)
     ax2.margins(x=0)
     ax2.legend(fontsize=8)
@@ -103,4 +104,4 @@ def two_subpicture():
 
 
 if __name__ == "__main__":
-    two_subpicture()
+    one_plt()

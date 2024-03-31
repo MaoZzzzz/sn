@@ -16,18 +16,18 @@ bar_width = 0.3
 opacity = 0.8
 
 ind = np.array([1, 2.5, 4, 5.5, 7])
-# plt.bar(ind - bar_width - bar_width / 2, rfaas, bar_width, alpha=opacity, label='RFaas', edgecolor='black')
-# plt.bar(ind - bar_width / 2, rfaas_wo_sc, bar_width, alpha=opacity, label='RFaas-wo-sc', edgecolor='black')
-# plt.bar(ind + bar_width / 2, rfaas_wo_dn, bar_width, alpha=opacity, label='RFaas-wo-dn', edgecolor='black')
-# plt.bar(ind + bar_width + bar_width / 2, rfaas_wo_all, bar_width, alpha=opacity, label='RFaas-wo-scdn', edgecolor='black')
+plt.bar(ind - bar_width - bar_width / 2, rfaas, bar_width, alpha=opacity, label='RFaas', edgecolor='black')
+plt.bar(ind - bar_width / 2, rfaas_wo_sc, bar_width, alpha=opacity, label='RFaas-wo-sc', edgecolor='black')
+plt.bar(ind + bar_width / 2, rfaas_wo_dn, bar_width, alpha=opacity, label='RFaas-wo-dn', edgecolor='black')
+plt.bar(ind + bar_width + bar_width / 2, rfaas_wo_all, bar_width, alpha=opacity, label='RFaas-wo-scdn', edgecolor='black')
 
-plt.plot(ind, rfaas, marker='*', label='RFaas', linewidth=2)
-plt.plot(ind, rfaas_wo_sc, marker='o', label='KNN', linewidth=2)
-plt.plot(ind, rfaas_wo_dn, marker='.', label='RFR', linewidth=2)
-plt.plot(ind, rfaas_wo_all, marker='+', label='SVC', linewidth=2)
+# plt.plot(ind, rfaas, marker='*', label='RFaas', linewidth=2)
+# plt.plot(ind, rfaas_wo_sc, marker='o', label='KNN', linewidth=2)
+# plt.plot(ind, rfaas_wo_dn, marker='.', label='RFR', linewidth=2)
+# plt.plot(ind, rfaas_wo_all, marker='+', label='SVC', linewidth=2)
 
 for i, value in enumerate(rfaas):
-    plt.text(ind[i] - bar_width - bar_width / 2, value, str(value), ha='center', va='bottom', fontsize=8)
+    plt.text(ind[i] - bar_width - bar_width / 2, value, str(value), ha='center', va='bottom', fontsize=8, fontproperties='Times New Roman')
 for i, value in enumerate(rfaas_wo_sc):
     plt.text(ind[i] - bar_width / 2, value, str(value), ha='center', va='bottom', fontsize=8)
 for i, value in enumerate(rfaas_wo_dn):
@@ -35,16 +35,16 @@ for i, value in enumerate(rfaas_wo_dn):
 for i, value in enumerate(rfaas_wo_all):
     plt.text(ind[i] + bar_width + bar_width / 2, value, str(value), ha='center', va='bottom', fontsize=8)
 
-for i in range(2):
-    plt.fill_between(ind, np.array(rfaas) + 0.5, np.array(rfaas) - 0.5, facecolor='blue', alpha=0.2)
+# for i in range(2):
+#     plt.fill_between(ind, np.array(rfaas) + 0.5, np.array(rfaas) - 0.5, facecolor='blue', alpha=0.2)
+#
+#     plt.fill_between(ind, np.array(rfaas_wo_sc) + 0.5, np.array(rfaas_wo_sc) - 0.5, facecolor='orange', alpha=0.2)
+#
+#     plt.fill_between(ind, np.array(rfaas_wo_dn) + 0.5, np.array(rfaas_wo_dn) - 0.5, facecolor='green', alpha=0.2)
+#
+#     plt.fill_between(ind, np.array(rfaas_wo_all) + 0.5, np.array(rfaas_wo_all) - 0.5, facecolor='red', alpha=0.2)
 
-    plt.fill_between(ind, np.array(rfaas_wo_sc) + 0.5, np.array(rfaas_wo_sc) - 0.5, facecolor='orange', alpha=0.2)
-
-    plt.fill_between(ind, np.array(rfaas_wo_dn) + 0.5, np.array(rfaas_wo_dn) - 0.5, facecolor='green', alpha=0.2)
-
-    plt.fill_between(ind, np.array(rfaas_wo_all) + 0.5, np.array(rfaas_wo_all) - 0.5, facecolor='red', alpha=0.2)
-
-plt.xticks(ind, labels)
+plt.xticks(ind, labels, fontproperties='Times New Roman')
 plt.tick_params(axis='both', which='major', labelsize=8, length=0)
 plt.margins(x=0.05)
 # plt.ylim(20, 110)
