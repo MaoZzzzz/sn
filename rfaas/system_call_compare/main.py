@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['font.sans-serif'] = ['SimSun']
 
 file_path = 'data.txt'  # Replace with your actual file path
 
@@ -28,7 +28,7 @@ def one_plt():
     plt.bar(df.index, df['one'], bar_width, alpha=opacity, label='X86', edgecolor='black')
     plt.bar(df.index + bar_width, df['Normalized'], bar_width, alpha=opacity, label='RISCV', edgecolor='black')
 
-    plt.xticks(df.index + bar_width / 2, df['Operation'], rotation=90)
+    plt.xticks(df.index + bar_width / 2, df['Operation'], rotation=90, fontproperties='Times New Roman')
     plt.tick_params(axis='both', which='major', labelsize=8, length=0)
     plt.margins(x=0)
 
