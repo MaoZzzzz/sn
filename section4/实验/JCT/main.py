@@ -2,7 +2,7 @@ from matplotlib import pyplot as plt
 from matplotlib.pyplot import MultipleLocator
 import numpy as np
 
-plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['font.sans-serif'] = ['Times New Roman']
 
 
 def overall_jct():
@@ -40,13 +40,13 @@ def overall_jct():
     # plt.bar(x + 5 * bar_width / 2, FCFS, width=bar_width, align='center', edgecolor='black', label="FCFS",
     #         color=(255 / 255, 230 / 255, 183 / 255))
 
-    plt.xticks(x, labels)
+    plt.xticks(x, labels, fontproperties='SimSun')
 
     plt.tick_params(axis='both', which='major', labelsize=13, length=0)
     plt.margins(x=0)
 
     # plt.legend(fontsize=13, ncol=2, bbox_to_anchor=(0.75, 0.5))
-    plt.ylabel('归一化时间', labelpad=5, fontsize=13)
+    plt.ylabel('归一化时间', labelpad=5, fontsize=13, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(left=0.15, bottom=0.15)
     plt.savefig("overall_jct.pdf")
@@ -94,13 +94,13 @@ def long_short_jct():
     # plt.bar(x + 5 * bar_width / 2, FCFS, width=bar_width, align='center', edgecolor='black',
     #         label='FCFS', color=(255 / 255, 230 / 255, 183 / 255))
 
-    plt.xticks(x, labels)
+    plt.xticks(x, labels, fontproperties='SimSun')
 
     plt.tick_params(axis='both', which='major', labelsize=13, length=0)
     plt.margins(x=0)
 
     # plt.legend(fontsize=13, ncol=2, loc='upper right')
-    plt.ylabel('归一化时间', labelpad=5, fontsize=13)
+    plt.ylabel('归一化时间', labelpad=5, fontsize=13, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(left=0.15, bottom=0.15)
     plt.savefig("long_short_jct.pdf")
@@ -171,11 +171,12 @@ def train_queue_jct():
 
     plt.xticks(x, labels)
 
-    plt.ylabel('时间（分钟）', fontdict={'size': 13})
+    plt.ylabel('时间（分钟）', fontdict={'family': 'SimSun', 'size': 13})
     plt.tick_params(labelsize=13)
     plt.grid()
 
-    plt.legend((p1[0], p2[0]), ('平均训练时间', '平均排队时间'), loc='upper left', fontsize=13)
+    plt.legend((p1[0], p2[0]), ('平均训练时间', '平均排队时间'), loc='upper left', fontsize=13,
+               prop={'family': 'SimSun', 'size': 13})
 
     # plt.tight_layout()
     # plt.xticks(rotation=30)
@@ -236,5 +237,4 @@ def new_old():
 
 
 if __name__ == '__main__':
-    # train_queue_jct()
-    new_old()
+    train_queue_jct()

@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['font.sans-serif'] = ['Times New Roman']
 plt.rcParams['axes.unicode_minus'] = False
 
 
@@ -116,18 +116,21 @@ def box_sub():
         # data.append(groups_mlp_x86[i])
 
         bplot = ax.boxplot(data, patch_artist=True, labels=labels,
-                           positions=(0.1, 0.3, 0.6, 0.8, 1.1, 1.3, 1.6, 1.8),
+                           positions=(0.1, 0.3, 0.8, 1.0, 1.5, 1.7, 2.2, 2.4),
                            widths=0.18, showfliers=False)
 
-        x_position = [0.2, 0.7, 1.2, 1.7]
+        x_position = [0.25, 0.95, 1.65, 2.35]
         x_position_fmt = ["RFR", "KNN", "LR", "SVR"]
-        ax.set_title(functionName[i], fontsize=13)
+
+        font_dict = {'fontname': 'Times New Roman', 'fontsize': 13}
+        ax.set_title(functionName[i], fontsize=13, fontproperties='Times New Roman')
         ax.set_xticks(x_position)
-        ax.set_xticklabels(x_position_fmt)
+        ax.set_xticklabels(x_position_fmt, fontdict=font_dict)
+
         ax.tick_params(axis='both', labelsize=13)
 
         if i == 0 or i == 3 or i == 6:
-            ax.set_ylabel("预测时间", fontsize=13)
+            ax.set_ylabel("预测时间", fontsize=13, fontproperties='SimSun')
 
         for patch, color in zip(bplot['boxes'], colors):
             patch.set_facecolor(color)

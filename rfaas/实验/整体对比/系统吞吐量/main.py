@@ -5,7 +5,7 @@ import numpy as np
 # rfaas_wo_sysytemcall = [0.41, 1.43, 1.21]
 # rfaas = [0.42, 1.64, 1.61]
 
-plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['font.sans-serif'] = ['Times New Roman']
 
 
 def draw_slo():
@@ -18,8 +18,8 @@ def draw_slo():
     opacity = 0.8
 
     ind = np.arange(len(labels))
-    plt.bar(ind - bar_width / 4, openfaas, bar_width / 2, alpha=opacity, label='OpenFaas', edgecolor='black')
-    plt.bar(ind + bar_width / 4, rfaas, bar_width / 2, alpha=opacity, label='RFaas', edgecolor='black')
+    plt.bar(ind - bar_width / 4, openfaas, bar_width / 2, alpha=opacity, label='OpenFaaS', edgecolor='black')
+    plt.bar(ind + bar_width / 4, rfaas, bar_width / 2, alpha=opacity, label='RFaaS', edgecolor='black')
 
     for i, value in enumerate(openfaas):
         plt.text(ind[i] - bar_width / 4, openfaas[i], str(value), ha='center', va='bottom', fontsize=13)
@@ -33,7 +33,7 @@ def draw_slo():
     plt.ylim(0, 1.4)
 
     plt.legend(fontsize=13)
-    plt.ylabel('归一化结果', labelpad=5, fontsize=13)
+    plt.ylabel('归一化结果', labelpad=5, fontsize=13, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(left=0.2)
     plt.savefig("slo_throughput_compare.pdf")
@@ -51,10 +51,10 @@ def draw():
     opacity = 0.8
 
     ind = np.arange(len(labels))
-    plt.bar(ind - bar_width / 2, openfaas, bar_width / 2, alpha=opacity, label='OpenFaas', edgecolor='black')
-    plt.bar(ind, rfaas_wo_sysytemcall, bar_width / 2, alpha=opacity, label='RFaas-',
+    plt.bar(ind - bar_width / 2, openfaas, bar_width / 2, alpha=opacity, label='OpenFaaS', edgecolor='black')
+    plt.bar(ind, rfaas_wo_sysytemcall, bar_width / 2, alpha=opacity, label='RFaaS-',
             edgecolor='black')
-    plt.bar(ind + bar_width / 2, rfaas, bar_width / 2, alpha=opacity, label='RFaas', edgecolor='black')
+    plt.bar(ind + bar_width / 2, rfaas, bar_width / 2, alpha=opacity, label='RFaaS', edgecolor='black')
 
     for i, value in enumerate(openfaas):
         plt.text(ind[i] - bar_width / 2, openfaas[i], str(value), ha='center', va='bottom', fontsize=13)
@@ -63,14 +63,14 @@ def draw():
     for i, value in enumerate(rfaas):
         plt.text(ind[i] + bar_width / 2, rfaas[i], str(value), ha='center', va='bottom', fontsize=13)
 
-    plt.xticks(ind, labels)
+    plt.xticks(ind, labels, fontproperties='SimSun')
     plt.tick_params(axis='both', which='major', labelsize=13, length=0)
     # plt.margins(x=0)
 
     plt.ylim(0, 1.10)
 
     plt.legend(fontsize=13)
-    plt.ylabel('归一化结果', labelpad=5, fontsize=13)
+    plt.ylabel('归一化结果', labelpad=5, fontsize=13, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(left=0.2)
     plt.savefig("throughput_compare.pdf")

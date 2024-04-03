@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['font.sans-serif'] = ['Times New Roman']
 
 
 def draw(rfaas, rfaas_wo_sysytemcall, openfaas):
@@ -23,10 +23,10 @@ def draw(rfaas, rfaas_wo_sysytemcall, openfaas):
     opacity = 0.8
 
     ind = np.arange(len(labels))
-    plt.bar(ind - bar_width / 2, base, bar_width / 2, alpha=opacity, label='RFaas', edgecolor='black')
-    plt.bar(ind, normalized_rfaas_wo_sysytemcall, bar_width / 2, alpha=opacity, label='RFaas-',
+    plt.bar(ind - bar_width / 2, base, bar_width / 2, alpha=opacity, label='RFaaS', edgecolor='black')
+    plt.bar(ind, normalized_rfaas_wo_sysytemcall, bar_width / 2, alpha=opacity, label='RFaaS-',
             edgecolor='black')
-    plt.bar(ind + bar_width / 2, normalized_openfaas, bar_width / 2, alpha=opacity, label='OpenFaas', edgecolor='black')
+    plt.bar(ind + bar_width / 2, normalized_openfaas, bar_width / 2, alpha=opacity, label='OpenFaaS', edgecolor='black')
 
     plt.xticks(ind, labels)
     plt.tick_params(axis='both', which='major', labelsize=13, length=0)
@@ -34,10 +34,10 @@ def draw(rfaas, rfaas_wo_sysytemcall, openfaas):
     plt.ylim(0, 20)
 
     plt.legend(fontsize=13)
-    plt.ylabel('归一化结果', labelpad=5, fontsize=13)
+    plt.ylabel('归一化结果', labelpad=5, fontsize=13, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     # plt.subplots_adjust(bottom=0.4)
-    plt.savefig("periodic_compare.pdf")
+    plt.savefig("bursty_compare.pdf")
     plt.show()
 
 
@@ -66,4 +66,4 @@ def bursty():
 
 
 if __name__ == "__main__":
-    periodic()
+    bursty()

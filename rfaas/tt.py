@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-plt.rcParams['font.sans-serif'] = ['SimSun']
+plt.rcParams['font.sans-serif'] = ['Times New Roman']
 plt.rcParams['axes.unicode_minus'] = False
 
 
@@ -72,19 +72,20 @@ def draw_in_one():
     ax0 = axs[0]
     ax0.bar(x - width / 2, first_x86_data, width, label='X86', edgecolor='black')
     ax0.bar(x + width / 2, first_riscv64_data, width, label='RISCV', edgecolor='black')
-    ax0.set_xticks(x, fontproperties='Times New Roman')
-    ax0.set_xticklabels(labels, fontsize=10, fontproperties='Times New Roman')
-    ax0.set_ylabel('时间(ms)', fontsize=10)
+    ax0.set_xticks(x)
+    ax0.set_xticklabels(labels, fontsize=10)
+    ax0.set_ylabel('时间(ms)', fontsize=10, fontproperties='SimSun')
     # ax0.set_xlabel('阶段')
-    ax0.set_title('第一次连接时间示例', fontsize=10)
+    ax0.set_title('第一次连接时间示例', fontsize=10, fontproperties='SimSun')
+    ax0.set_ylim([0, 50])
     ax0.legend(fontsize=10, prop=legend_font)
 
     ax1 = axs[1]
     ax1.bar(x - width / 2, second_x86_data, width, label='X86', edgecolor='black')
     ax1.bar(x + width / 2, second_riscv64_data, width, label='RISCV', edgecolor='black')
-    ax1.set_xticks(x, fontproperties='Times New Roman')
-    ax1.set_xticklabels(labels, fontsize=10, fontproperties='Times New Roman')
-    ax1.set_title('第二次连接时间示例', fontsize=10)
+    ax1.set_xticks(x)
+    ax1.set_xticklabels(labels, fontsize=10)
+    ax1.set_title('第二次连接时间示例', fontsize=10, fontproperties='SimSun')
     ax1.set_ylim([0, 50])
     ax1.legend(fontsize=10, prop=legend_font)
 

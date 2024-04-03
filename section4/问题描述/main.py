@@ -2,7 +2,7 @@ from matplotlib import pyplot as plt
 from matplotlib.pyplot import MultipleLocator
 import numpy as np
 
-plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['font.sans-serif'] = ['Times New Roman']
 
 
 def draw():
@@ -12,7 +12,7 @@ def draw():
     for i in range(len(data)):
         data[i] = data[i] * 11
 
-    plt.figure(figsize=(3, 2))
+    plt.figure(figsize=(4, 3))
     bar_width = 0.6
     opacity = 0.8
 
@@ -21,12 +21,12 @@ def draw():
 
     plt.xlim((0, 6))
 
-    plt.tick_params(axis='both', which='major', labelsize=8, length=0)
+    plt.tick_params(axis='both', which='major', labelsize=10, length=0)
     plt.margins(x=0)
 
     # plt.legend(fontsize=8)
-    plt.xlabel('最低所需内存大小（GB）', labelpad=5)
-    plt.ylabel('模型名称', labelpad=5)
+    plt.xlabel('最低所需内存大小（GB）', labelpad=5, fontsize=10, fontproperties='SimSun')
+    plt.ylabel('模型名称', labelpad=5, fontsize=10, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(left=0.3, bottom=0.2)
     plt.savefig("memory_min_usage.pdf")
@@ -59,8 +59,8 @@ def sm_jct():
     plt.subplots(figsize=(3, 2))
     plt.scatter(x, y, s=20, edgecolors='black')
 
-    plt.ylabel('归一化平均作业完成时间', fontsize=10)
-    plt.xlabel('流式多处理器比例(%)', fontsize=10)
+    plt.ylabel('归一化平均作业完成时间', fontsize=10, fontproperties='SimSun')
+    plt.xlabel('流式多处理器比例(%)', fontsize=10, fontproperties='SimSun')
     plt.tick_params(labelsize=10)
 
     plt.plot(x, yvals, markersize=8, linewidth=3, color='r')

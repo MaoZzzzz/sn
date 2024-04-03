@@ -3,7 +3,7 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import MultipleLocator
 
-plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['font.sans-serif'] = ['Times New Roman']
 
 data1 = []
 data2 = []
@@ -12,7 +12,7 @@ data4 = []
 
 
 def read1() -> None:
-    filepath = "D:\\Workdir\\实验数据\\gpu-high\\optimus"
+    filepath = "D:\\Workdir\\实验数据\\gpu-low\\optimus"
     filefullpath = filepath + "\\" + "1.txt"
     d1 = []
     d2 = []
@@ -45,7 +45,7 @@ def read1() -> None:
 
 
 def read2() -> None:
-    filepath = "D:\\Workdir\\实验数据\\gpu-high\\tresias"
+    filepath = "D:\\Workdir\\实验数据\\gpu-low\\tresias"
     filefullpath = filepath + "\\" + "1.txt"
     d1 = []
     d2 = []
@@ -78,7 +78,7 @@ def read2() -> None:
 
 
 def read3() -> None:
-    filepath = "D:\\Workdir\\实验数据\\gpu-high\\aiturbo"
+    filepath = "D:\\Workdir\\实验数据\\gpu-low\\aiturbo"
     filefullpath = filepath + "\\" + "1.txt"
     d1 = []
     d2 = []
@@ -111,7 +111,7 @@ def read3() -> None:
 
 
 def read4() -> None:
-    filepath = "D:\\Workdir\\实验数据\\gpu-high\\vgpu"
+    filepath = "D:\\Workdir\\实验数据\\gpu-low\\vgpu"
     filefullpath = filepath + "\\" + "1.txt"
     d1 = []
     d2 = []
@@ -149,19 +149,17 @@ def drawcdf():
     ecdf2 = sm.distributions.ECDF(data2)
     ecdf3 = sm.distributions.ECDF(data3)
     ecdf4 = sm.distributions.ECDF(data4)
-    # 等差数列，用于绘制X轴数据
+
     x1 = np.linspace(min(data1), max(data1))
     x2 = np.linspace(min(data2), max(data2))
     x3 = np.linspace(min(data3), max(data3))
     x4 = np.linspace(min(data3), max(data4))
-    # x轴数据上值对应的累计密度概率
+
     y1 = ecdf1(x1)
     y2 = ecdf2(x2)
     y3 = ecdf3(x3)
     y4 = ecdf4(x4)
-    # 绘制阶梯图
-    # with plt.style.context(['ieee', 'grid']):
-    #
+
     plt.figure(figsize=(5, 3))
 
     plt.gca().spines['bottom'].set_linewidth(1.1)
@@ -179,11 +177,11 @@ def drawcdf():
 
     plt.subplots_adjust(left=0.2, bottom=0.2)
 
-    # plt.legend(bbox_to_anchor=(-0.03, 1.03), labelspacing=0.1, borderpad=0.1, loc="higher right", fontsize=13, edgecolor='black', framealpha=0.66)
-    # plt.legend(loc="higher right", handletextpad=0.1, fontsize=13, framealpha=0.6,
+    # plt.legend(bbox_to_anchor=(-0.03, 1.03), labelspacing=0.1, borderpad=0.1, loc="lower right", fontsize=13, edgecolor='black', framealpha=0.66)
+    # plt.legend(loc="lower right", handletextpad=0.1, fontsize=13, framealpha=0.6,
     #            labelspacing=0.1, borderpad=0.1, fancybox=False)
 
-    plt.legend(loc="higher right", handletextpad=0.1, fontsize=13, framealpha=0.6,
+    plt.legend(loc="lower right", handletextpad=0.1, fontsize=13, framealpha=0.6,
                fancybox=False)
 
     plt.xlim((0, 100))
@@ -197,7 +195,7 @@ def drawcdf():
 
     plt.grid(True, linestyle='--')
     # plt.tight_layout()
-    plt.savefig('gpu_util_high.pdf')
+    plt.savefig('gpu_util_low.pdf')
     plt.show()
 
 

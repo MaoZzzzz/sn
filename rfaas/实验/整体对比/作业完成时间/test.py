@@ -19,8 +19,8 @@ def draw(rfaas, openfaas):
     opacity = 0.8
 
     ind = np.arange(len(labels))
-    plt.bar(ind - bar_width / 4, base, bar_width / 2, alpha=opacity, label='RFaas', edgecolor='black')
-    plt.bar(ind + bar_width / 4, normalized_openfaas, bar_width / 2, alpha=opacity, label='OpenFaas', edgecolor='black')
+    plt.bar(ind - bar_width / 4, base, bar_width / 2, alpha=opacity, label='RFaaS', edgecolor='black')
+    plt.bar(ind + bar_width / 4, normalized_openfaas, bar_width / 2, alpha=opacity, label='OpenFaaS', edgecolor='black')
 
     plt.xticks(ind, labels)
     plt.tick_params(axis='both', which='major', labelsize=13, length=0)

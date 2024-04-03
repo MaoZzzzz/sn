@@ -3,10 +3,7 @@ import numpy as np
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 
-plt.rcParams['font.sans-serif'] = ['SimHei']
-
-
-# plt.rcParams.update({'font.size': 25})
+plt.rcParams['font.sans-serif'] = ['Times New Roman']
 
 
 def box_float():
@@ -158,8 +155,8 @@ def time_compare():
     ax.tick_params(axis='both', which='major', labelsize=13, length=0)
     plt.margins(x=0)
     ax.legend(fontsize=13, loc="lower left", ncol=2)
-    ax.set_xlabel('样本数量', labelpad=5, fontsize=13)
-    ax.set_ylabel('时间(s)', labelpad=5, fontsize=13)
+    ax.set_xlabel('样本数量', labelpad=5, fontsize=13, fontproperties='SimSun')
+    ax.set_ylabel('时间(s)', labelpad=5, fontsize=13, fontproperties='SimSun')
     # plt.title('CPU test')
     ax.grid(True, linestyle='--')
 
