@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.rcParams['font.sans-serif'] = ['SimSun']
+plt.rcParams['font.sans-serif'] = ['Times New Roman']
 
 file_path = 'data.txt'
 
@@ -22,11 +22,11 @@ def draw(rfaas, openfaas):
     plt.bar(ind - bar_width / 4, base, bar_width / 2, alpha=opacity, label='RFaaS', edgecolor='black')
     plt.bar(ind + bar_width / 4, normalized_openfaas, bar_width / 2, alpha=opacity, label='OpenFaaS', edgecolor='black')
 
-    plt.xticks(ind, labels)
+    plt.xticks(ind, labels, fontproperties='SimSun')
     plt.tick_params(axis='both', which='major', labelsize=13, length=0)
 
     plt.legend(fontsize=13, loc='upper left')
-    plt.ylabel('归一化结果', labelpad=5, fontsize=13)
+    plt.ylabel('执行时间（归一化）', labelpad=5, fontsize=13, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(bottom=0.3, left=0.2)
     plt.savefig("openfaas_RFaas_full_time_compare.pdf")

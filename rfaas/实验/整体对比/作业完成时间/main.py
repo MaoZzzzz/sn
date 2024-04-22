@@ -34,10 +34,10 @@ def draw(rfaas, rfaas_wo_sysytemcall, openfaas):
     plt.ylim(0, 20)
 
     plt.legend(fontsize=13)
-    plt.ylabel('归一化结果', labelpad=5, fontsize=13, fontproperties='SimSun')
+    plt.ylabel('执行时间（归一化）', labelpad=5, fontsize=13, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     # plt.subplots_adjust(bottom=0.4)
-    plt.savefig("bursty_compare.pdf")
+    plt.savefig("sporadic_compare.pdf")
     plt.show()
 
 
@@ -66,4 +66,4 @@ def bursty():
 
 
 if __name__ == "__main__":
-    bursty()
+    sporadic()

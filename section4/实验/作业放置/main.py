@@ -21,7 +21,7 @@ def ps_worker_jct():
     p3 = plt.bar(x + bar_width / 2, Centralized, width=bar_width, align='center', edgecolor='black')
     p4 = plt.bar(x + 3 * bar_width / 2, Optimus, width=bar_width, align='center', edgecolor='black')
 
-    plt.ylabel('归一化时间', fontdict={'family': 'SimSun', 'size': 13})
+    plt.ylabel('平均作业完成时间（归一化）', fontdict={'family': 'SimSun', 'size': 13})
     # plt.xlabel('参数服务器和', fontdict={'size': 16})
     plt.tick_params(labelsize=13)
     plt.grid()
@@ -55,7 +55,7 @@ def small_large_jct():
     p3 = plt.bar(x + bar_width / 2, Centralized, width=bar_width, align='center', edgecolor='black')
     p4 = plt.bar(x + 3 * bar_width / 2, Optimus, width=bar_width, align='center', edgecolor='black')
 
-    plt.ylabel('归一化时间', fontdict={'family': 'SimSun', 'size': 13})
+    plt.ylabel('平均作业完成时间（归一化）', fontdict={'family': 'SimSun', 'size': 13})
     # plt.xlabel('Small(%):Large(%)', fontdict={'size': 13})
     plt.tick_params(labelsize=13)
     plt.grid()
@@ -72,4 +72,4 @@ def small_large_jct():
 
 
 if __name__ == '__main__':
-    ps_worker_jct()
+    small_large_jct()

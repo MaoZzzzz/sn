@@ -34,7 +34,6 @@ def calculate_percentage(data, total_time):
 
 
 def main():
-
     file_path = "D:\\Workdir\\idea\\Schedule\\data\\format\\upload-creator-X86.txt"
     data1 = process_file(file_path)
     total_time = data1["total_time"]
@@ -110,7 +109,6 @@ def main():
 
 
 def plot_stacked_bars(data_list):
-
     labels = list(data_list[0].keys())
     # positions = np.arange(len(labels))
     positions = np.ones(len(data_list[0]))
@@ -142,13 +140,13 @@ def plot_stacked_bars(data_list):
 
         positions = positions + 1
 
-    plt.rcParams["font.sans-serif"] = ["SimSun"]
-    plt.xticks(list(range(1, len(data_list) + 1)), function_name, fontproperties='Times New Roman')
-    plt.tick_params(axis='both', which='major', labelsize=12, length=0)
+    plt.rcParams["font.sans-serif"] = ["Times New Roman"]
+    plt.xticks(list(range(1, len(data_list) + 1)), function_name)
+    plt.tick_params(axis='both', which='major', labelsize=13, length=0)
     plt.margins(x=0.01)
 
-    plt.xlabel('系统调用名称', fontsize=12)
-    plt.ylabel('时间占比(%)', fontsize=12)
+    plt.xlabel('系统调用名称', fontsize=13, fontproperties='Simsun')
+    plt.ylabel('时间占比(%)', fontsize=13, fontproperties='Simsun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(bottom=0.3, left=0.2)
     plt.savefig("system_call_percent.pdf")

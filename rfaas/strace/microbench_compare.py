@@ -58,7 +58,7 @@ def compare_and_plot(file1_path, file2_path):
 
 
 def normalization(file1_path, file2_path):
-    plt.rcParams['font.sans-serif'] = ['SimSun']
+    plt.rcParams['font.sans-serif'] = ['Times New Roman']
 
     data1 = read_data(file1_path)
     data2 = read_data(file2_path)
@@ -83,12 +83,12 @@ def normalization(file1_path, file2_path):
              'BML_BEQZ', 'BML_BNEZ', 'BUBBLE_SORT', 'CBML_BEQZ', 'CBML_BNEZ', 'CML_BEQZ', 'CML_BNEZ', 'DEC', 'DIV',
              'DO_WHILE_LOOP', 'FLOAT_DEC', 'FLOAT_DIV', 'FLOAT_INC', 'FLOAT_MUL', 'FOR_LOOP', 'INC', 'LOAD_BEQZ',
              'LOAD_BNEZ', 'MUL', 'NOP', 'NOT', 'OR', 'STD_SORT', 'UB', 'WHILE_LOOP']
-    plt.xticks(ind, names, rotation=90, fontproperties='Times New Roman')
+    plt.xticks(ind, names, rotation=90)
     plt.tick_params(axis='both', which='major', labelsize=8, length=0)
     plt.margins(x=0)
     plt.legend(fontsize=8, loc='upper right')
-    plt.xlabel('函数名称', labelpad=5)
-    plt.ylabel('归一化结果', labelpad=5)
+    plt.xlabel('函数名称', labelpad=5, fontproperties='SimSun')
+    plt.ylabel('执行时间（归一化）', labelpad=5, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
 
     plt.subplots_adjust(bottom=0.4)

@@ -33,7 +33,7 @@ def draw_slo():
     plt.ylim(0, 1.4)
 
     plt.legend(fontsize=13)
-    plt.ylabel('归一化结果', labelpad=5, fontsize=13, fontproperties='SimSun')
+    plt.ylabel('执行时间（归一化）', labelpad=5, fontsize=13, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(left=0.2)
     plt.savefig("slo_throughput_compare.pdf")
@@ -70,7 +70,7 @@ def draw():
     plt.ylim(0, 1.10)
 
     plt.legend(fontsize=13)
-    plt.ylabel('归一化结果', labelpad=5, fontsize=13, fontproperties='SimSun')
+    plt.ylabel('执行时间（归一化）', labelpad=5, fontsize=13, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(left=0.2)
     plt.savefig("throughput_compare.pdf")
@@ -78,4 +78,4 @@ def draw():
 
 
 if __name__ == "__main__":
-    draw_slo()
+    draw()

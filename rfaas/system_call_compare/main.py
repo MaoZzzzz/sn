@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.rcParams['font.sans-serif'] = ['SimSun']
+plt.rcParams['font.sans-serif'] = ['Times New Roman']
 # plt.rcParams['font.weight'] = 'bold'
 
 file_path = 'data.txt'  # Replace with your actual file path
@@ -73,11 +73,11 @@ def two_subpicture():
     ax1.bar(df_half1.index, df_half1['Normalized'], bar_width, alpha=opacity, label='RISCV',
             edgecolor='black')
     ax1.set_xticks(df_half1.index)
-    ax1.set_xticklabels(df_half1['Operation'], rotation=90, fontproperties='Times New Roman')
+    ax1.set_xticklabels(df_half1['Operation'], rotation=90)
     ax1.tick_params(axis='both', which='major', labelsize=8, length=0)
     ax1.margins(x=0)
     ax1.legend(fontsize=8)
-    ax1.set_ylabel('归一化结果', labelpad=5)
+    ax1.set_ylabel('执行时间（归一化）', labelpad=5, fontproperties='SimSun')
     ax1.grid(True, linestyle='--')
 
     # 绘制第二个子图
@@ -85,12 +85,12 @@ def two_subpicture():
     ax2.bar(df_half2.index, df_half2['Normalized'], bar_width, alpha=opacity, label='RISCV',
             edgecolor='black')
     ax2.set_xticks(df_half2.index)
-    ax2.set_xticklabels(df_half2['Operation'], rotation=90, fontproperties='Times New Roman')
+    ax2.set_xticklabels(df_half2['Operation'], rotation=90)
     ax2.tick_params(axis='both', which='major', labelsize=8, length=0)
     ax2.margins(x=0)
     ax2.legend(fontsize=8)
-    ax2.set_xlabel('系统调用名称', labelpad=5)
-    ax2.set_ylabel('归一化结果', labelpad=5)
+    ax2.set_xlabel('系统调用名称', labelpad=5, fontproperties='SimSun')
+    ax2.set_ylabel('执行时间（归一化）', labelpad=5, fontproperties='SimSun')
     ax2.grid(True, linestyle='--')
 
     # 调整子图之间的垂直间距
@@ -104,4 +104,4 @@ def two_subpicture():
 
 
 if __name__ == "__main__":
-    one_plt()
+    two_subpicture()

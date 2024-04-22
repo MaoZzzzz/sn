@@ -42,11 +42,11 @@ def overall_jct():
 
     plt.xticks(x, labels, fontproperties='SimSun')
 
-    plt.tick_params(axis='both', which='major', labelsize=13, length=0)
+    plt.tick_params(axis='both', which='major', labelsize=11, length=0)
     plt.margins(x=0)
 
     # plt.legend(fontsize=13, ncol=2, bbox_to_anchor=(0.75, 0.5))
-    plt.ylabel('归一化时间', labelpad=5, fontsize=13, fontproperties='SimSun')
+    plt.ylabel('平均作业完成时间（归一化）', labelpad=5, fontsize=11, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(left=0.15, bottom=0.15)
     plt.savefig("overall_jct.pdf")
@@ -96,11 +96,11 @@ def long_short_jct():
 
     plt.xticks(x, labels, fontproperties='SimSun')
 
-    plt.tick_params(axis='both', which='major', labelsize=13, length=0)
+    plt.tick_params(axis='both', which='major', labelsize=11, length=0)
     plt.margins(x=0)
 
     # plt.legend(fontsize=13, ncol=2, loc='upper right')
-    plt.ylabel('归一化时间', labelpad=5, fontsize=13, fontproperties='SimSun')
+    plt.ylabel('平均作业完成时间（归一化）', labelpad=5, fontsize=11, fontproperties='SimSun')
     plt.grid(True, linestyle='--')
     plt.subplots_adjust(left=0.15, bottom=0.15)
     plt.savefig("long_short_jct.pdf")
